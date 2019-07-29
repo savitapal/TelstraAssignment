@@ -7,7 +7,20 @@
 		<key>Assignment.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>52C1B65D22EB19E900475EF2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52C1B67122EB19EC00475EF2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
