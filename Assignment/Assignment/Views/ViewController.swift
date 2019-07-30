@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         
         DataViewModel.objDataViewModel.refreshCollectionData { (done) in
             if done {
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
                     self.collectionView.reloadData()
                     self.navigationItem.title = DataViewModel.objDataViewModel.title
                 }
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
     @objc func refreshView() {
         DataViewModel.objDataViewModel.refreshCollectionData { (done) in
             if done {
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
             }
