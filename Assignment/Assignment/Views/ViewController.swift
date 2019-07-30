@@ -67,12 +67,12 @@ class ViewController: UIViewController {
     
     // Setting up Navigation bar
     func setupNavigationBar() {
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshView))
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshCollectionView))
         navigationItem.rightBarButtonItem = refreshButton
     }
     
     // View refresh method
-    @objc func refreshView() {
+    @objc func refreshCollectionView() {
         DataViewModel.objDataViewModel.refreshCollectionData { (done) in
             if done {
                 DispatchQueue.main.async {
