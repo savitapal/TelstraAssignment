@@ -29,7 +29,7 @@ class AssignmentTests: XCTestCase {
             #selector(objViewController.collectionView(_:cellForItemAt:))))
     }
     
-    func testTableViewCellHasReuseIdentifier() {
+    func testCollectionViewCellHasReuseIdentifier() {
         let cell = objViewController.collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: IndexPath(row: 0, section: 0))
         let actualReuseIdentifer = cell.reuseIdentifier
         let expectedReuseIdentifier = "cell"

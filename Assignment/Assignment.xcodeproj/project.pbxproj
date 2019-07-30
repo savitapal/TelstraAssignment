@@ -12,6 +12,7 @@
 		52C1B66922EB19EC00475EF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C1B66822EB19EC00475EF2 /* Assets.xcassets */; };
 		52C1B66C22EB19EC00475EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52C1B66A22EB19EC00475EF2 /* LaunchScreen.storyboard */; };
 		52C1B67722EB19EC00475EF2 /* AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1B67622EB19EC00475EF2 /* AssignmentTests.swift */; };
+		52E313F822F03D9500D6494F /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E313F722F03D9500D6494F /* NetworkManagerTests.swift */; };
 		52F8E67722EEB60700A6134F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F8E67622EEB60700A6134F /* Constants.swift */; };
 		52F8E67A22EEBC3900A6134F /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F8E67922EEBC3900A6134F /* DataModel.swift */; };
 		52F8E67E22EEBEBA00A6134F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F8E67D22EEBEBA00A6134F /* NetworkManager.swift */; };
@@ -41,6 +42,7 @@
 		52C1B67222EB19EC00475EF2 /* AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C1B67622EB19EC00475EF2 /* AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTests.swift; sourceTree = "<group>"; };
 		52C1B67822EB19EC00475EF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52E313F722F03D9500D6494F /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		52F8E67622EEB60700A6134F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		52F8E67922EEBC3900A6134F /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		52F8E67D22EEBEBA00A6134F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				52C1B67622EB19EC00475EF2 /* AssignmentTests.swift */,
 				52C1B67822EB19EC00475EF2 /* Info.plist */,
+				52E313F722F03D9500D6494F /* NetworkManagerTests.swift */,
 			);
 			path = AssignmentTests;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52E313F822F03D9500D6494F /* NetworkManagerTests.swift in Sources */,
 				52C1B67722EB19EC00475EF2 /* AssignmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
