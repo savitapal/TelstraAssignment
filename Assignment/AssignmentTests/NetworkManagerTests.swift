@@ -35,7 +35,7 @@ class NetworkManagerTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler: nil)
     }
     
-    func testAPIResponse() {
+    func testAPIResponseTitle() {
         
         let exp = expectation(description: "Alamofire API Response")
 
@@ -48,6 +48,34 @@ class NetworkManagerTests: XCTestCase {
             }
             
             exp.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+    
+    func testAPIJSONResponse() {
+        
+        let exp = expectation(description: "API JSON Response")
+        
+        Alamofire.request(Constant.url) .validate().responseString { (response) in
+            
+            if response.result.isSuccess {
+                guard let data = response.value?.data(using: .utf8) else { return }
+                do {
+                    //JSON data parsing using Codable protocol
+                    let decoder = JSONDecoder()
+                    _ = try decoder.decode(APIResponse.self, from: data)
+                    
+                    exp.fulfill()
+                    
+                } catch let err {
+                    
+                    XCTFail(err.localizedDescription)
+                }
+            } else {
+                
+                XCTFail(response.error?.localizedDescription ?? "ERROR")
+            }
         }
         
         waitForExpectations(timeout: 5.0, handler: nil)
