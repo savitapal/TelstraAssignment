@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         return layout
     }()
     
+    var activityView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,8 +39,9 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.white
         
-        setupNavigationBar()
+        setUpNavigationBar()
         setUpCollectionView()
+        setUpActivityIndicator()
     }
     
     //Setting up collection view
@@ -61,9 +64,21 @@ class ViewController: UIViewController {
         collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
     }
     
+    // Setting up Activity indicator
+    
+    func setUpActivityIndicator() {
+        
+        activityView = UIActivityIndicatorView(style: .whiteLarge)
+        activityView.center = self.view.center
+        activityView.backgroundColor = UIColor.black
+        self.view.addSubview(activityView)
+        
+        activityView.layer.cornerRadius = 5.0
+    }
+    
     // Setting up Navigation bar
     
-    func setupNavigationBar() {
+    func setUpNavigationBar() {
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshCollectionView))
         navigationItem.rightBarButtonItem = refreshButton
     }
@@ -71,13 +86,19 @@ class ViewController: UIViewController {
     // View refresh method
     
     @objc func refreshCollectionView() {
+        
+        self.activityView.startAnimating()
+
         DataViewModel.objDataViewModel.refreshCollectionData { (done) in
             if done {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                     self.navigationItem.title = DataViewModel.objDataViewModel.title
+                    self.activityView.stopAnimating()
                 }
             } else {
+                
+                self.activityView.stopAnimating()
                 
                 let alert = UIAlertController(title: "Error", message: "Error while fetching data", preferredStyle: .alert)
                 
