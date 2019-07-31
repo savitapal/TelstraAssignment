@@ -11,7 +11,7 @@ import UIKit
 
 struct Constant {
     
-    static let ipadWidth: CGFloat =  UIScreen.main.bounds.width/2.1
+    static let ipadWidth: CGFloat =  UIScreen.main.bounds.width/2
     
     static let iphoneWidth: CGFloat =  UIScreen.main.bounds.width
     

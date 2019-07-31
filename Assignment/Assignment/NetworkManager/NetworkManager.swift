@@ -14,10 +14,6 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    // specifying init method as private, so that other instance of this class will not be created
-    
-    private init() {}
-    
     // MARK: - API call method
     
     func getDataFromAPI(completionHandler: @escaping (APIResponse?, _ error: Error?) -> Void) {
@@ -34,6 +30,8 @@ class NetworkManager {
                 } catch let err {
                     completionHandler(nil, err)
                 }
+            } else {
+                completionHandler(nil, response.error)
             }
         }
     }

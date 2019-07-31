@@ -11,6 +11,16 @@ import UIKit
 class CustomCollectionViewCell: UICollectionViewCell {
     // MARK: - Variables
     
+    let containerView: UIView = {
+    let view = UIView()
+    view.backgroundColor = UIColor.white
+    view.clipsToBounds = true
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.layer.borderColor = UIColor.black.cgColor
+    view.layer.borderWidth = 1.0
+    return view
+    }()
+    
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.numberOfLines = 0
@@ -44,9 +54,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.contentView.layer.borderColor = UIColor.black.cgColor
-        self.contentView.layer.borderWidth = 1.0
-        
         setUpViews()
     }
     
@@ -58,7 +65,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
                                           withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
                                           verticalFittingPriority: UILayoutPriority) -> CGSize {
         width.constant = bounds.size.width
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             return contentView.systemLayoutSizeFitting(CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight))
         } else {
             return contentView.systemLayoutSizeFitting(CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight))
@@ -68,6 +75,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
     // Adding views and setting constraints
     
     fileprivate func setUpViews() {
+        
+        contentView.addSubview(containerView)
+        containerView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+
         contentView.addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15).isActive = true

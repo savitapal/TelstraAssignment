@@ -24,7 +24,8 @@ class DataViewModel {
     
     // MARK: - refesh the collectionview by calling API
     
-    func refreshCollectionData(callCompleted: @escaping (Bool) -> Void) {
+    func refreshCollectionData(completionHandler: @escaping (Bool) -> Void) {
+        
         NetworkManager.shared.getDataFromAPI { (data, error) in
             if error == nil {
                 guard let apiData = data else {
@@ -37,8 +38,11 @@ class DataViewModel {
                     
                     let array = viewRows.filter({ $0.title != nil || $0.description != nil || $0.imageHref != nil })
                     DataViewModel.objDataViewModel.dataArray = array
-                    callCompleted(true)
+                    completionHandler(true)
                 }
+            } else {
+                
+                completionHandler(false)
             }
         }
     }

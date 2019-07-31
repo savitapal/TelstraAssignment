@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             layout.estimatedItemSize = CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight)
         } else {
             layout.estimatedItemSize = CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight)
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: 10).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: -10).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: 10).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
     }
     
     // Setting up Navigation bar
@@ -77,6 +77,15 @@ class ViewController: UIViewController {
                     self.collectionView.reloadData()
                     self.navigationItem.title = DataViewModel.objDataViewModel.title
                 }
+            } else {
+                
+                let alert = UIAlertController(title: "Error", message: "Error while fetching data", preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                    
+                }))
+                
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -114,7 +123,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             layout.estimatedItemSize = CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight)
         } else {
             layout.estimatedItemSize = CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight)
@@ -124,13 +133,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        
+        super.viewWillTransition(to: size, with: coordinator)
+
+        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             layout.estimatedItemSize = CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight)
         } else {
             layout.estimatedItemSize = CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight)
         }
-        
+
         layout.invalidateLayout()
-        super.viewWillTransition(to: size, with: coordinator)
     }
+    
 }
