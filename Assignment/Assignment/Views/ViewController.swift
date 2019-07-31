@@ -29,26 +29,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.backgroundColor = UIColor.white
-        
         setUpViews()
-        
-        DataViewModel.objDataViewModel.refreshCollectionData { (done) in
-            if done {
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    self.navigationItem.title = DataViewModel.objDataViewModel.title
-                }
-            }
-        }
+        refreshCollectionView()
     }
     
     func setUpViews() {
+        
+        self.view.backgroundColor = UIColor.white
+        
         setupNavigationBar()
         setUpCollectionView()
     }
     
     //Setting up collection view
+    
     func setUpCollectionView() {
         collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collectionView.dataSource = self
@@ -59,6 +53,8 @@ class ViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(collectionView)
         
+        // Setting constraint to collectionview
+        
         collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor, constant: 10).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: -10).isActive = true
@@ -66,17 +62,20 @@ class ViewController: UIViewController {
     }
     
     // Setting up Navigation bar
+    
     func setupNavigationBar() {
         let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshCollectionView))
         navigationItem.rightBarButtonItem = refreshButton
     }
     
     // View refresh method
+    
     @objc func refreshCollectionView() {
         DataViewModel.objDataViewModel.refreshCollectionData { (done) in
             if done {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
+                    self.navigationItem.title = DataViewModel.objDataViewModel.title
                 }
             }
         }
@@ -84,6 +83,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: UICollectionView Datasource and Delegate methods
+
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataViewModel.objDataViewModel.dataArray.count
@@ -96,24 +96,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             return UICollectionViewCell()
         }
         
-        cell.titleLabel.text = ""
-        cell.descriptionLabel.text = ""
-        let rowdata = DataViewModel.objDataViewModel.dataArray[indexPath.row]
-        // check for nil values
-        if rowdata.title != nil || rowdata.description != nil || rowdata.imageHref != nil {
-            if let title = rowdata.title {
-                cell.titleLabel.text = title
-            }
-            if let description = rowdata.description {
-                cell.descriptionLabel.text = description
-            }
-            if let imageUrl = rowdata.imageHref {
-                let url = URL(string: imageUrl)
-                
-                cell.customImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder"))
-            } else {
-                cell.customImageView.image = #imageLiteral(resourceName: "placeholder")
-            }
+        let rowdata = DataViewModel.objDataViewModel.dataArray[indexPath.item]
+        
+        cell.titleLabel.text = rowdata.title
+        cell.descriptionLabel.text = rowdata.description
+        
+        if let imageUrl = rowdata.imageHref {
+            
+            let url = URL(string: imageUrl)
+            cell.customImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder"))
+        } else {
+            
+            cell.customImageView.image = #imageLiteral(resourceName: "placeholder")
         }
         
         return cell

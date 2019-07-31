@@ -11,15 +11,15 @@ import XCTest
 import Alamofire
 
 class NetworkManagerTests: XCTestCase {
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     func testAPIStatusCode() {
         
         let exp = expectation(description: "API Response Status Code")
-
+        
         Alamofire.request(Constant.url) .validate().responseString { (response) in
             
             if response.response?.statusCode == 200 {
@@ -38,7 +38,7 @@ class NetworkManagerTests: XCTestCase {
     func testAPIResponseTitle() {
         
         let exp = expectation(description: "Alamofire API Response")
-
+        
         DataViewModel.objDataViewModel.refreshCollectionData { (done) in
             if done {
                 
@@ -80,5 +80,5 @@ class NetworkManagerTests: XCTestCase {
         
         waitForExpectations(timeout: 5.0, handler: nil)
     }
-
+    
 }

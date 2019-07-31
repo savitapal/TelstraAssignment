@@ -10,16 +10,16 @@ import XCTest
 @testable import Assignment
 
 class AssignmentTests: XCTestCase {
-
+    
     let objViewController = ViewController()
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         objViewController.setUpViews()
         objViewController.refreshCollectionView()
     }
-
+    
     func testCollectionViewDateSourceDelegate() {
         XCTAssertTrue(objViewController.conforms(to: UICollectionViewDataSource.self))
         XCTAssertTrue(objViewController.conforms(to: UICollectionViewDelegate.self))

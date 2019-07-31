@@ -10,12 +10,20 @@ import Foundation
 import UIKit
 
 class DataViewModel {
-    // Shared instance
+    // MARK: - Variables
+    
     static let objDataViewModel = DataViewModel()
+    
     // Reqired data for the collectionview
+    
     var dataArray = [RowData]()
+    
+    // Title for navigationbar
+    
     var title: String?
-    // Api call to refesh the collectionview
+    
+    // MARK: - refesh the collectionview by calling API
+    
     func refreshCollectionData(callCompleted: @escaping (Bool) -> Void) {
         NetworkManager.shared.getDataFromAPI { (data, error) in
             if error == nil {
@@ -26,6 +34,7 @@ class DataViewModel {
                     self.title = title
                     guard let viewRows = apiData.rows else { return }
                     // Check for nil values inside the array
+                    
                     let array = viewRows.filter({ $0.title != nil || $0.description != nil || $0.imageHref != nil })
                     DataViewModel.objDataViewModel.dataArray = array
                     callCompleted(true)
