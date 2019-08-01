@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             layout.estimatedItemSize = CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight)
         } else {
             layout.estimatedItemSize = CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight)
@@ -47,7 +47,8 @@ class ViewController: UIViewController {
     //Setting up collection view
     
     func setUpCollectionView() {
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        collectionView.layer.masksToBounds = true
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
@@ -94,6 +95,11 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                     self.navigationItem.title = DataViewModel.objDataViewModel.title
+                    
+                    self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                                      at: .top,
+                                                      animated: true)
+                    
                     self.activityView.stopAnimating()
                 }
             } else {
@@ -126,25 +132,28 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
             return UICollectionViewCell()
         }
         
-        let rowdata = DataViewModel.objDataViewModel.dataArray[indexPath.item]
-        
-        cell.titleLabel.text = rowdata.title
-        cell.descriptionLabel.text = rowdata.description
-        
-        if let imageUrl = rowdata.imageHref {
+        if DataViewModel.objDataViewModel.dataArray.count > 0 && DataViewModel.objDataViewModel.dataArray.count > indexPath.item {
             
-            let url = URL(string: imageUrl)
-            cell.customImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder"))
-        } else {
+            let rowdata = DataViewModel.objDataViewModel.dataArray[indexPath.item]
             
-            cell.customImageView.image = #imageLiteral(resourceName: "placeholder")
+            cell.titleLabel.text = rowdata.title
+            cell.descriptionLabel.text = rowdata.description
+            
+            if let imageUrl = rowdata.imageHref {
+                
+                let url = URL(string: imageUrl)
+                cell.customImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "placeholder"))
+            } else {
+                
+                cell.customImageView.image = #imageLiteral(resourceName: "placeholder")
+            }
         }
         
         return cell
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             layout.estimatedItemSize = CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight)
         } else {
             layout.estimatedItemSize = CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight)
@@ -157,7 +166,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         super.viewWillTransition(to: size, with: coordinator)
 
-        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
             layout.estimatedItemSize = CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight)
         } else {
             layout.estimatedItemSize = CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight)

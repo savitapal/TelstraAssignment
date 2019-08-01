@@ -10,7 +10,6 @@
 		2813B46450FE1AA18D31F191 /* Pods_Assignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F88F78D7C2803E8C40090CD /* Pods_Assignment.framework */; };
 		52C1B66222EB19E900475EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1B66122EB19E900475EF2 /* AppDelegate.swift */; };
 		52C1B66922EB19EC00475EF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52C1B66822EB19EC00475EF2 /* Assets.xcassets */; };
-		52C1B66C22EB19EC00475EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52C1B66A22EB19EC00475EF2 /* LaunchScreen.storyboard */; };
 		52C1B67722EB19EC00475EF2 /* AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C1B67622EB19EC00475EF2 /* AssignmentTests.swift */; };
 		52E313F822F03D9500D6494F /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E313F722F03D9500D6494F /* NetworkManagerTests.swift */; };
 		52F8E67722EEB60700A6134F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F8E67622EEB60700A6134F /* Constants.swift */; };
@@ -37,7 +36,6 @@
 		52C1B65E22EB19E900475EF2 /* Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C1B66122EB19E900475EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52C1B66822EB19EC00475EF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		52C1B66B22EB19EC00475EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52C1B66D22EB19EC00475EF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52C1B67222EB19EC00475EF2 /* AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C1B67622EB19EC00475EF2 /* AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTests.swift; sourceTree = "<group>"; };
@@ -49,11 +47,14 @@
 		52F8E67F22EEC0F600A6134F /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		52F8E6DF22EEE28200A6134F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52F8E6E022EEE28200A6134F /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		59D2EE6B5D42D78E818A7FEC /* Pods_AssignmentUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssignmentUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7267194CB97071D0064DC709 /* Pods_AssignmentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssignmentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AEFF7F58F2372A1A72B7EB8 /* Pods-AssignmentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentTests.debug.xcconfig"; path = "Target Support Files/Pods-AssignmentTests/Pods-AssignmentTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9954D677AB9CC473DFCA65 /* Pods-AssignmentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentTests.release.xcconfig"; path = "Target Support Files/Pods-AssignmentTests/Pods-AssignmentTests.release.xcconfig"; sourceTree = "<group>"; };
+		94E6B9877858CA6A342E1104 /* Pods-AssignmentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentUITests.release.xcconfig"; path = "Target Support Files/Pods-AssignmentUITests/Pods-AssignmentUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9F88F78D7C2803E8C40090CD /* Pods_Assignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0653EC7BAC8572D9F747364 /* Pods-Assignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment.release.xcconfig"; path = "Target Support Files/Pods-Assignment/Pods-Assignment.release.xcconfig"; sourceTree = "<group>"; };
+		F38926C37A97753A41836F1E /* Pods-AssignmentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssignmentUITests.debug.xcconfig"; path = "Target Support Files/Pods-AssignmentUITests/Pods-AssignmentUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,8 @@
 				F0653EC7BAC8572D9F747364 /* Pods-Assignment.release.xcconfig */,
 				7AEFF7F58F2372A1A72B7EB8 /* Pods-AssignmentTests.debug.xcconfig */,
 				7B9954D677AB9CC473DFCA65 /* Pods-AssignmentTests.release.xcconfig */,
+				F38926C37A97753A41836F1E /* Pods-AssignmentUITests.debug.xcconfig */,
+				94E6B9877858CA6A342E1104 /* Pods-AssignmentUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -117,7 +120,6 @@
 				52F8E6DE22EEE28200A6134F /* Views */,
 				52C1B66122EB19E900475EF2 /* AppDelegate.swift */,
 				52C1B66822EB19EC00475EF2 /* Assets.xcassets */,
-				52C1B66A22EB19EC00475EF2 /* LaunchScreen.storyboard */,
 				52C1B66D22EB19EC00475EF2 /* Info.plist */,
 			);
 			path = Assignment;
@@ -179,6 +181,7 @@
 			children = (
 				9F88F78D7C2803E8C40090CD /* Pods_Assignment.framework */,
 				7267194CB97071D0064DC709 /* Pods_AssignmentTests.framework */,
+				59D2EE6B5D42D78E818A7FEC /* Pods_AssignmentUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,7 +270,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C1B66C22EB19EC00475EF2 /* LaunchScreen.storyboard in Resources */,
 				52C1B66922EB19EC00475EF2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,17 +380,6 @@
 			targetProxy = 52C1B67322EB19EC00475EF2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		52C1B66A22EB19EC00475EF2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				52C1B66B22EB19EC00475EF2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		52C1B67922EB19EC00475EF2 /* Debug */ = {
@@ -512,6 +503,7 @@
 			baseConfigurationReference = 4C05B0398C841D6E04134020 /* Pods-Assignment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Assignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -530,6 +522,7 @@
 			baseConfigurationReference = F0653EC7BAC8572D9F747364 /* Pods-Assignment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Assignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

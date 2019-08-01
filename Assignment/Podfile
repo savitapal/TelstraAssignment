@@ -14,4 +14,9 @@ target 'Assignment' do
     # Pods for testing
   end
 
+  target 'AssignmentUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+  
 end

@@ -50,6 +50,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
         return width
     }()
     
+    let spacingValue: CGFloat = 15
+    let containerViewSpacingValue: CGFloat = 8
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +68,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
                                           withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
                                           verticalFittingPriority: UILayoutPriority) -> CGSize {
         width.constant = bounds.size.width
-        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             return contentView.systemLayoutSizeFitting(CGSize(width: Constant.ipadWidth, height: Constant.estimatedHeight))
         } else {
             return contentView.systemLayoutSizeFitting(CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight))
@@ -78,29 +81,34 @@ class CustomCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(containerView)
         containerView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: containerViewSpacingValue).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -containerViewSpacingValue).isActive = true
         containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.addSubview(titleLabel)
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: spacingValue).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: spacingValue).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -spacingValue).isActive = true
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(descriptionLabel)
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
-        descriptionLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
-        
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: spacingValue).isActive = true
+        descriptionLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: spacingValue).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -spacingValue).isActive = true
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+
         contentView.addSubview(customImageView)
-        customImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20).isActive = true
-        customImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15).isActive = true
-        customImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15).isActive = true
+        customImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: spacingValue).isActive = true
+        customImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        customImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         customImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        customImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        customImageView.heightAnchor.constraint(equalToConstant: Constant.estimatedHeight).isActive = true
+        customImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        customImageView.translatesAutoresizingMaskIntoConstraints = false
         
         if let lastSubview = contentView.subviews.last {
-            contentView.bottomAnchor.constraint(equalTo: lastSubview.bottomAnchor, constant: 10).isActive = true
+            contentView.bottomAnchor.constraint(equalTo: lastSubview.bottomAnchor, constant: spacingValue).isActive = true
         }
     }
 }
