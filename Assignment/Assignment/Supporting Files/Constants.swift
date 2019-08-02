@@ -13,7 +13,7 @@ struct Constant {
     
     static let ipadWidth: CGFloat =  UIScreen.main.bounds.width/2
     
-    static let iphoneWidth: CGFloat =  UIScreen.main.bounds.width
+    static let iphoneWidth: CGFloat =  (UIScreen.main.bounds.width - 10)
     
     static let estimatedHeight: CGFloat =  200
     

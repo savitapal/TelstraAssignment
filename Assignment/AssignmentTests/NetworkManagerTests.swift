@@ -25,8 +25,7 @@ class NetworkManagerTests: XCTestCase {
             if response.response?.statusCode == 200 {
                 
                 exp.fulfill()
-            }
-            else {
+            } else {
                 
                 XCTFail(response.error?.localizedDescription ?? "ERROR")
             }
@@ -45,9 +44,11 @@ class NetworkManagerTests: XCTestCase {
                 let resultString = DataViewModel.objDataViewModel.title
                 let expectedString = "About Canada"
                 XCTAssertEqual(resultString, expectedString)
+                exp.fulfill()
+            } else {
+                
+                XCTFail("TITLE DOES NOT MATCH")
             }
-            
-            exp.fulfill()
         }
         
         waitForExpectations(timeout: 5.0, handler: nil)
@@ -64,9 +65,15 @@ class NetworkManagerTests: XCTestCase {
                 do {
                     //JSON data parsing using Codable protocol
                     let decoder = JSONDecoder()
-                    _ = try decoder.decode(APIResponse.self, from: data)
+                    let viewData = try decoder.decode(APIResponse.self, from: data)
                     
-                    exp.fulfill()
+                    if let count = viewData.rows?.count, count > 0 {
+                        
+                        exp.fulfill()
+                    } else {
+                        
+                        XCTFail("API DOES NOT CONTAIN ANY DATA TO DISPLAY ON COLLECTIONVIEW")
+                    }
                     
                 } catch let err {
                     
