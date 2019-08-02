@@ -57,6 +57,7 @@ class ViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = UIColor.white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.accessibilityIdentifier = "detailCollectionView"
         self.view.addSubview(collectionView)
         
         // Setting constraint to collectionview
@@ -91,7 +92,7 @@ class ViewController: UIViewController {
     @objc func refreshCollectionView() {
         
         self.activityView.startAnimating()
-
+        
         DataViewModel.objDataViewModel.refreshCollectionData { (done) in
             if done {
                 DispatchQueue.main.async {
@@ -167,7 +168,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
         super.viewWillTransition(to: size, with: coordinator)
-
+        
         collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -175,7 +176,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         } else {
             layout.estimatedItemSize = CGSize(width: Constant.iphoneWidth, height: Constant.estimatedHeight)
         }
-
+        
         layout.invalidateLayout()
     }
     

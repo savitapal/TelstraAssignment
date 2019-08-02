@@ -12,13 +12,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
     // MARK: - Variables
     
     let containerView: UIView = {
-    let view = UIView()
-    view.backgroundColor = UIColor.white
-    view.clipsToBounds = true
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.layer.borderColor = UIColor.black.cgColor
-    view.layer.borderWidth = 1.0
-    return view
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1.0
+        return view
     }()
     
     let titleLabel: UILabel = {
@@ -97,7 +97,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         descriptionLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: spacingValue).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -spacingValue).isActive = true
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        
         contentView.addSubview(customImageView)
         customImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: spacingValue).isActive = true
         customImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
